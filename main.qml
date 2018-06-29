@@ -1,19 +1,37 @@
 import QtQuick 2.11
 import QtQuick.Window 2.11
-import QtWebEngine 1.0
-import simpleBrowser.Backend 1.0
+
 
 Window {
+    id: mainWindow
+    objectName: "mainWindow"
+    property string path: "www.google.ch"
     visible: true
     width: 640
     height: 480
     title: qsTr("Simple Webrowser")
-    BackendBrowser{
-        id:backenBrowser
+
+    Loader {
+        objectName: "loader"
+        anchors.fill: parent
+        id: pageLoader
+        z: -1
     }
 
-    WebEngineView {
+    Rectangle{
+        id: browserState
+        objectName: "browserState"
         anchors.fill: parent
-        url: backenBrowser.urlPath
+        color: "lightgrey"
+        Component.onCompleted: loadTimer.start()
+        z: -2
     }
+
+
+    Timer {
+        id: loadTimer
+        interval: 1000; running: false; repeat: false
+        onTriggered: pageLoader.source = "browserview.qml"
+    }
+
 }

@@ -14,7 +14,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    QMLBackend/qtbrowser.cpp
+    QMLBackend/qtbrowser.cpp \
+    QMLObjectHander/qtfrontendobjecthandler.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,4 +31,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    QMLBackend/qtbrowser.h
+    QMLBackend/qtbrowser.h \
+    QMLObjectHander/qtfrontendobjecthandler.h

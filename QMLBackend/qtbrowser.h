@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QString>
+class QtFrontendObjectHandler;
 namespace QMLBackend {
 class QtBrowser : public QObject
 {
@@ -17,6 +18,7 @@ signals:
     void urlPathChanged();
 
 private:
+    QtFrontendObjectHandler* m_FrontEndHandler;
     QString m_urlPath;
 };
 
